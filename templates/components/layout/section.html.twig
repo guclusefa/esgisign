@@ -1,0 +1,27 @@
+<section>
+    <div class="d-flex justify-content-between align-items-center">
+        {% if block('title') or this.title %}
+        <h1 class="section-title">
+            {{ this.title }}
+            {% block title %}{% endblock %}
+        </h1>
+        {% endif %}
+        {% if block('actions') %}
+            <div class="d-flex gap-3">
+                {% block actions %}{% endblock %}
+            </div>
+        {% endif %}
+    </div>
+    {% if block('description') or this.description %}
+        <div class="section-description">
+            {{ this.description }}
+            {% block description %}{% endblock %}
+        </div>
+    {% endif %}
+    <hr>
+    {% if block('content') %}
+        <div class="section-content">
+            {% block content %}{% endblock %}
+        </div>
+    {% endif %}
+</section>

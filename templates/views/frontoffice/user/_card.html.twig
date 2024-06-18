@@ -1,0 +1,47 @@
+<div class="card shadow-sm">
+	<div class="card-body">
+		<div class="d-flex flex-row justify-content-between align-items-center mb-2">
+			<div>
+				<a href="{{ path('app.frontoffice.users.show', { 'id': profile.id }) }}" class="text-decoration-none">
+					<h5 class="card-title mb-1">{{ profile.username }}</h5>
+				</a>
+				<div>
+					{% if profile.banned %}
+						<span class="badge bg-danger me-1">Banni</span>
+					{% endif %}
+					{% if profile.verified %}
+						<span class="badge bg-success">Vérifié</span>
+					{% endif %}
+				</div>
+			</div>
+
+			<div>
+				{% if profile.imageName %}
+					<a href="{{ path('app.frontoffice.users.show', { 'id': profile.id }) }}">
+						<img src="{{ vich_uploader_asset(profile) }}" alt="{{ profile.username }} profile image" class="rounded-circle" width="40" height="40">
+					</a>
+				{% else %}
+					<a href="{{ path('app.frontoffice.users.show', { 'id': profile.id }) }}">
+						<img src="{{ asset('build/images/default.png') }}" alt="profile" class="rounded-circle" width="40" height="40">
+					</a>
+				{% endif %}
+			</div>
+		</div>
+		{% if app.user == profile or is_granted('ROLE_ADMIN') %}
+			<p class="card-text mb-1">Rôles :
+				{{ profile.roles | join(', ') | replace({'ROLE_': ''}) }}</p>
+			<p class="card-text mb-1">Email :
+				{{ profile.email }}</p>
+		{% endif %}
+		<p class="card-text mb-1">Nom :
+			{{ profile.lastName }}</p>
+		<p class="card-text mb-1">Prénom :
+			{{ profile.firstName }}</p>
+		<p class="card-text mb-1">Bio :
+			{{ profile.biography | nl2br }}</p>
+		<p class="card-text">Inscrit le
+			{{ profile.createdAt|format_datetime('full', 'short') }}</p>
+
+		{% include 'views/frontoffice/user/_actions.html.twig' with { 'column': false } %}
+	</div>
+</div>

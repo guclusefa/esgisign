@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ profile.username }}
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-3">
+		<h1>Profil de {{ profile.username }}</h1>
+		<hr/>
+		{% include 'views/frontoffice/user/_card.html.twig' with { 'profile': profile, 'full': true } %}
+	</div>
+{% endblock %}
