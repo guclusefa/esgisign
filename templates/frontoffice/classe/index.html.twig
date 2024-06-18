@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classe index{% endblock %}
+
+{% block body %}
+    <h1>Classe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Promotion</th>
+                <th>Cours</th>
+                <th>Attendance</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for classe in classes %}
+            <tr>
+                <td>{{ classe.id }}</td>
+                <td>{{ classe.start ? classe.start|date('Y-m-d H:i') : '' }}</td>
+                <td>{{ classe.end ? classe.end|date('Y-m-d H:i') : '' }}</td>
+                <td>{{ classe.promotion.name }}</td>
+                <td>{{ classe.course.subjectAndProfLabel }}</td>
+                <td>{{ classe.attendances.count }}
+                <ul>
+                    {% for attendance in classe.attendances %}
+                        <li>{{ attendance.student.user.fullname }}</li>
+                    {% endfor %}
+                </ul>
+                </td>
+                <td>
+                    <a href="{{ path('app_frontoffice_classe_show', {'id': classe.id}) }}">show</a>
+                    <a href="{{ path('app_frontoffice_classe_edit', {'id': classe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_frontoffice_classe_new') }}">Create new</a>
+{% endblock %}

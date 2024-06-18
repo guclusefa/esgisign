@@ -105,4 +105,9 @@ class Course
 
         return $this;
     }
+
+    public function getSubjectAndProfLabel(): string
+    {
+        return sprintf('%s (%s)', $this->getSubject()->getName(), $this->getUser()->getFullname());
+    }
 }

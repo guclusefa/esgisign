@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Course;
+use App\Entity\Promotion;
+use App\Entity\Subject;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class CourseType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+'choice_label' => 'fullname',
+            ])
+            ->add('subject', EntityType::class, [
+                'class' => Subject::class,
+'choice_label' => 'name',
+            ])
+            ->add('promotion', EntityType::class, [
+                'class' => Promotion::class,
+'choice_label' => 'name',
+            ])
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Course::class,
+        ]);
+    }
+}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attendance index{% endblock %}
+
+{% block body %}
+    <h1>Attendance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Classe</th>
+                <th>Student</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for attendance in attendances %}
+            <tr>
+                <td>{{ attendance.id }}</td>
+                <td>{{ attendance.classe.label }}</td>
+                <td>{{ attendance.student.user.fullname }}</td>
+                <td>
+                    <a href="{{ path('app_frontoffice_attendance_show', {'id': attendance.id}) }}">show</a>
+                    <a href="{{ path('app_frontoffice_attendance_edit', {'id': attendance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_frontoffice_attendance_new') }}">Create new</a>
+{% endblock %}

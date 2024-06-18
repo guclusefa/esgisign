@@ -3,15 +3,13 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <twig:Layout:Wrapper>
-        <twig:Layout:Section>
-            {% block title %}Section title{% endblock %}
-            {% block description %}Section description{% endblock %}
-            {% block actions %}
-                <a href="#" class="btn btn-primary">Primary action</a>
-                <a href="#" class="btn btn-secondary">Secondary action</a>
-            {% endblock %}
-            {% block content %}See the documentation for <a href="https: //symfony.com/doc/current/bundles/ux-twig-component.html">UX Twig Component</a> to learn how to use this component.{% endblock %}
-        </twig:Layout:Section>
-    </twig:Layout:Wrapper>
+    <twig:Layout:Section>
+        {% block title %}Section title{% endblock %}
+        {% block description %}Section description{% endblock %}
+        {% block actions %}
+            <a href="#" class="btn btn-primary">Primary action</a>
+            <a href="#" class="btn btn-secondary">Secondary action</a>
+        {% endblock %}
+        {% block content %}See the documentation for <a href="https: //symfony.com/doc/current/bundles/ux-twig-component.html">UX Twig Component</a> to learn how to use this component.{% endblock %}
+    </twig:Layout:Section>
 {% endblock %}

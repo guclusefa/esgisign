@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attendance{% endblock %}
+
+{% block body %}
+    <h1>Attendance</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ attendance.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_frontoffice_attendance_index') }}">back to list</a>
+
+    <a href="{{ path('app_frontoffice_attendance_edit', {'id': attendance.id}) }}">edit</a>
+
+    {{ include('frontoffice/attendance/_delete_form.html.twig') }}
+{% endblock %}

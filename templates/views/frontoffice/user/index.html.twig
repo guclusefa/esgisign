@@ -3,18 +3,16 @@
 {% block title %}Utilisateurs{% endblock %}
 
 {% block body %}
-	<twig:Layout:Wrapper>
-		<twig:Layout:Section>
-			{% block title %}Les utilisateurs ({{ profiles.totalItemCount }}){% endblock %}
-			{% block actions %}
-				<button type="button" class="btn btn-custom-filter" data-bs-toggle="modal" data-bs-target="#exampleModal">
-					<i class="bi bi-funnel-fill"></i>
-				</button>
-			{% endblock %}
-			{% block content %}
-				{% include 'views/frontoffice/user/_list.html.twig' with { profiles: profiles } %}
-			{% endblock %}
-		</twig:Layout:Section>
-	</twig:Layout:Wrapper>
+	<twig:Layout:Section>
+		{% block title %}Les utilisateurs ({{ profiles.totalItemCount }}){% endblock %}
+		{% block actions %}
+			<button type="button" class="btn btn-custom-filter" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				<i class="bi bi-funnel-fill"></i>
+			</button>
+		{% endblock %}
+		{% block content %}
+			{% include 'views/frontoffice/user/_list.html.twig' with { profiles: profiles } %}
+		{% endblock %}
+	</twig:Layout:Section>
 	{% include 'views/frontoffice/user/_modal_filter.html.twig' %}
 {% endblock %}

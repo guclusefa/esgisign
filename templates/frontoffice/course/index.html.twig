@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Course index{% endblock %}
+
+{% block body %}
+    <h1>Course index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prof</th>
+                <th>Subject</th>
+                <th>Promotion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+            <tr>
+                <td>{{ course.id }}</td>
+                <td>{{ course.user.fullname }}</td>
+                <td>{{ course.subject.name }}</td>
+                <td>{{ course.promotion.name }}</td>
+                <td>
+                    <a href="{{ path('app_frontoffice_course_show', {'id': course.id}) }}">show</a>
+                    <a href="{{ path('app_frontoffice_course_edit', {'id': course.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_frontoffice_course_new') }}">Create new</a>
+{% endblock %}

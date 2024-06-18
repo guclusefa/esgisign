@@ -15,7 +15,9 @@
 	<body class="d-flex flex-column min-vh-100">
 		{% include '_header.html.twig' %}
 		<main class="flex-grow-1">
-			{% block body %}{% endblock %}
+			<div class="container my-4 d-flex flex-column gap-5">
+				{% block body %}{% endblock %}
+			</div>
 		</main>
 		<aside>
 		</aside>

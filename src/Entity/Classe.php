@@ -119,4 +119,15 @@ class Classe
 
         return $this;
     }
+
+    public function getLabel(): string
+    {
+        return sprintf(
+            'Cours du %s au %s - %s - %s',
+            $this->getStart()->format('Y-m-d'),
+            $this->getEnd()->format('Y-m-d'),
+            $this->getPromotion()->getName(),
+            $this->getPromotion()->getYear()
+        );
+    }
 }
